@@ -1,1 +1,139 @@
-<!-- Clean URL Home Page Content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neven Spooner</title>
+  <meta name="description" content="Portfolio of Neven Spooner: IT graduate skilled in cybersecurity, capture-the-flag, backend development, leadership, and full-stack projects.">
+  <meta name="keywords" content="IT Graduate, Cybersecurity, Capture The Flag, CTF, Full Stack, Web Development, Backend Development, Python, MongoDB, SQL, Leadership, Projects, Blue Team, TryHackMe, HackTheBox, PicoCTF, SSL Hosting, Portfolio">
+  <meta name="author" content="Neven Spooner">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/projects/">Projects</a>
+        <a href="/resume/">Resume</a>
+      </div>
+      <div class="toggle-switch">
+        <label class="switch">
+          <input type="checkbox" id="mode-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="profile-icon">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <h1>Neven</h1>
+      <p>IT Graduate</p>
+    </section>
+
+    <section class="intro">
+      <div class="about-center">
+        <p><strong>Hello, I'm Neven.</strong></p>
+        <p>I'm an IT graduate passionate about cybersecurity, backend development, problem-solving and building technology that works. I enjoy learning Japanese and Korean, cooking, photography, volleyball, electronics tinkering, and playing piano.</p>
+      </div>
+    </section>
+
+    <div class="large-section-gap"></div>
+
+    <section class="tech-stack">
+      <h2>My Tech Stack</h2>
+      <div class="stack-grid">
+        <div class="stack-item">Python</div>
+        <div class="stack-item">C#</div>
+        <div class="stack-item">C++</div>
+        <div class="stack-item">C</div>
+        <div class="stack-item">Java</div>
+        <div class="stack-item">JavaScript</div>
+        <div class="stack-item">HTML</div>
+        <div class="stack-item">CSS</div>
+        <div class="stack-item">SQL</div>
+        <div class="stack-item">MongoDB</div>
+        <div class="stack-item">Git</div>
+        <div class="stack-item">Wireshark</div>
+        <div class="stack-item">Windows</div>
+        <div class="stack-item">MacOS</div>
+        <div class="stack-item">Linux (CTFs & Labs)</div>
+        <div class="stack-item">SSL Hosting</div>
+        <div class="stack-item">Domain Deployment</div>
+        <div class="stack-item">Backend Development (Learning)</div>
+      </div>
+    </section>
+
+    <div class="large-section-gap"></div>
+
+    <section class="timeline">
+      <h2>My IT Journey</h2>
+      <div class="timeline-container">
+
+        <div class="timeline-item left">
+          <div class="content">
+            <h3>Feb 2021</h3>
+            <p>Started my Bachelor of IT degree at Queensland University of Technology (QUT).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="content">
+            <h3>Feb 2023</h3>
+            <p>Transferred to Macquarie University to continue my IT studies.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="content">
+            <h3>Jan 2025</h3>
+            <p>Graduated from Macquarie University with a Bachelor of Information Technology.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="content">
+            <h3>Future</h3>
+            <p>Excited to enter the IT industry and continue developing my skills.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content plain-footer">
+      <div class="socials">
+        <a href="https://discord.com/users/547321194278289408"><i class="fab fa-discord"></i></a>
+        <a href="https://www.linkedin.com/in/neven-spooner-991827266/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/neven.spooner.50/"><i class="fab fa-facebook"></i></a>
+      </div>
+      <div class="trademark">
+        <p>© 2025 Neven</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mode-toggle');
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+</body>
+</html>
