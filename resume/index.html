@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,3 +137,143 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neven - Resume</title>
+  <meta name="description" content="Resume of Neven Spooner, IT graduate with cybersecurity and backend development skills.">
+  <meta name="author" content="Neven Spooner">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/projects/">Projects</a>
+        <a href="/resume/">Resume</a>
+      </div>
+      <div class="toggle-switch">
+        <label class="switch">
+          <input type="checkbox" id="mode-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="resume-document">
+      <div class="resume-header">
+        <div class="resume-name">
+          <h1>Neven</h1>
+        </div>
+        <div class="resume-contact">
+          <p>0426 646 976</p>
+          <p>nevens2003@gmail.com</p>
+          <p><a href="https://www.linkedin.com/in/neven-spooner-991827266/" target="_blank">linkedin.com/in/neven-spooner-991827266/</a></p>
+        </div>
+      </div>
+
+      <!-- Objective -->
+      <div class="resume-section">
+        <h3>Objective</h3>
+        <div class="divider"></div>
+        <p>A resilient and dependable worker with a strong background in customer service, cybersecurity, leadership, and software development. Excellent communication, problem-solving, and technical reporting skills.</p>
+      </div>
+
+      <!-- Education -->
+      <div class="resume-section">
+        <h3>Education</h3>
+        <div class="divider"></div>
+        <p><strong>Macquarie University</strong><br>Bachelor of Information Technology (Graduated Jan 2025)</p>
+        <br>
+        <p><strong>Queensland University of Technology</strong><br>Bachelor of Information Technology (Feb 2021 – Nov 2022)</p>
+      </div>
+
+      <!-- Professional Experience -->
+      <div class="resume-section">
+        <h3>Professional Experience</h3>
+        <div class="divider"></div>
+
+        <div class="job">
+          <p><strong>Receptionist – Westleigh Village Medical Clinic</strong> (Aug 2024 – Jan 2025)</p>
+          <ul>
+            <li>Maintained office cleanliness and restocked supplies.</li>
+            <li>Handled emails, calls, and correspondence professionally.</li>
+            <li>Updated patient records and ensured data accuracy.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <p><strong>Construction Labourer – Katana Foundations</strong> (Jun 2023 – Aug 2024)</p>
+          <ul>
+            <li>Prepared construction sites and operated workplace tools and machinery.</li>
+            <li>Ensured job specifications were fully met.</li>
+            <li>Communicated efficiently with site supervisors and team members.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <p><strong>Customer Service – Collins Foods</strong> (Apr 2019 – Dec 2022)</p>
+          <ul>
+            <li>Delivered high-volume customer service and managed fast-paced operations.</li>
+            <li>Trained new staff and supervised daily tasks to ensure efficiency.</li>
+            <li>Assisted with facilities management and safety compliance.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <p><strong>Data Cleaning – Trade Nation Australia</strong> (Dec 2018 – Jan 2019)</p>
+          <ul>
+            <li>Corrected and validated data records across multiple record sets.</li>
+            <li>Performed data updates to align with client specifications and business rules.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="resume-section">
+        <h3>References</h3>
+        <div class="divider"></div>
+        <p>References available upon request.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content plain-footer">
+      <div class="socials">
+        <a href="https://discord.com/users/547321194278289408"><i class="fab fa-discord"></i></a>
+        <a href="https://www.linkedin.com/in/neven-spooner-991827266/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/neven.spooner.50/"><i class="fab fa-facebook"></i></a>
+      </div>
+      <div class="trademark">
+        <p>© 2025 Neven</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mode-toggle');
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+</body>
+</html>
+>>>>>>> 1fd566e729d6c20cfd4e692442a0d92262900c85

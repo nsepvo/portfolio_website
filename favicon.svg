@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="45" fill="#800080"/>
   <text x="50%" y="58%" text-anchor="middle" font-size="50" font-family="Arial" fill="white">N</text>
 </svg>
+=======
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="#800080"/>
+  <text x="50%" y="58%" text-anchor="middle" font-size="50" font-family="Arial" fill="white">N</text>
+</svg>
+>>>>>>> 1fd566e729d6c20cfd4e692442a0d92262900c85
