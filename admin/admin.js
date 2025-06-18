@@ -65,7 +65,7 @@ function renderProjects(projects) {
     `;
     list.appendChild(div);
   });
-}
+
 
 async function addProject() {
   const title = document.getElementById("title").value;
