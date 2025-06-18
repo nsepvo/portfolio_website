@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".project-grid");
+  const container = document.querySelector(".project-grid2");
 
-  fetch("https://your-backend-name.onrender.com/projects")
+  fetch("https://portfolio-website-hyiq.onrender.com/projects")
     .then(res => res.json())
     .then(data => {
       container.innerHTML = ""; // Clear hardcoded HTML (optional)
