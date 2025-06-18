@@ -1,3 +1,5 @@
+console.log("✅ JS connected");
+
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".project-grid");
 
