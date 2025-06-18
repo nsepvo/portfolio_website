@@ -31,6 +31,13 @@ async def list_projects(request: Request, _: None = Depends(verify_admin)):
     await conn.close()
     return projects
 
+@app.get("/projects")
+async def get_public_projects():
+    conn = await get_db()
+    projects = await crud.get_projects(conn)
+    await conn.close()
+    return {"projects": projects}
+
 @app.post("/admin/projects")
 async def create_project(project: Project, request: Request, _: None = Depends(verify_admin)):
     conn = await get_db()
