@@ -1,7 +1,6 @@
-# backend/crud.py
 from typing import List
 import asyncpg
-from models import Project
+from .models import Project
 
 async def get_projects(conn) -> List[dict]:
     rows = await conn.fetch("SELECT * FROM projects ORDER BY id;")
