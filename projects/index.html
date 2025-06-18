@@ -34,7 +34,7 @@
       <!-- Capture The Flags -->
       <div class="project-category">
         <h2>Capture The Flag (CTFs)</h2>
-        <div class="project-grid">
+        <div id="dynamic-projects" class="project-grid">
 
           <div class="project-card">
             <h3>TryHackMe Challenges</h3>
@@ -139,5 +139,29 @@
       }
     });
   </script>
+
+  <script>
+  fetch('http://127.0.0.1:8000/projects')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('dynamic-projects');
+      if (!container) return;
+
+      data.projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+          <h3>${project.title}</h3>
+          <p><strong>${project.type}</strong></p>
+          <p>${project.description}</p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching projects:', error);
+    });
+  </script>
+
 </body>
 </html>
