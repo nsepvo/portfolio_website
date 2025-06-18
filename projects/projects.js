@@ -1,7 +1,8 @@
 console.log("✅ JS connected");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".project-grid");
+  const container = document.getElementById("dynamic-projects");
+
 
   fetch("https://portfolio-website-hyiq.onrender.com/projects")
     .then(res => res.json())
