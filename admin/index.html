@@ -16,7 +16,7 @@
         <a href="/">Home</a>
         <a href="/projects/">Projects</a>
         <a href="/resume/">Resume</a>
-        <a href="/admin.html">Admin</a>
+        <a href="/admin/">Admin</a>
       </div>
       <div class="toggle-switch">
         <label class="switch">
@@ -27,15 +27,17 @@
     </nav>
   </header>
 
+  <!-- Blur Login Overlay -->
   <div id="blur-overlay">
     <div class="auth-popup">
-        <h2>Admin Login</h2>
-        <input type="password" id="overlay-password" placeholder="Enter admin password" />
-        <button onclick="submitOverlayPassword()">Enter</button>
-        <p id="auth-error" style="color: red; display: none;">Incorrect password</p>
+      <h2>Admin Login</h2>
+      <input type="password" id="overlay-password" placeholder="Enter admin password" />
+      <button id="overlay-submit">Enter</button>
+      <p id="auth-error" style="color: red; display: none;">Incorrect password</p>
     </div>
   </div>
 
+  <!-- Admin Panel -->
   <main class="admin-container">
     <h1>Admin Panel</h1>
 
@@ -64,100 +66,6 @@
       document.body.classList.toggle("dark-mode");
       localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
     });
-
-    // Admin Panel Logic
-    const authForm = document.getElementById("auth-form");
-    const adminPanel = document.getElementById("admin-panel");
-    const passwordInput = document.getElementById("password");
-    const projectList = document.getElementById("project-list");
-    const addForm = document.getElementById("add-form");
-
-    let adminPassword = "";
-
-    authForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      adminPassword = passwordInput.value;
-      try {
-        const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
-          headers: { "X-Admin-Password": adminPassword }
-        });
-        if (!res.ok) throw new Error("Unauthorized");
-        const projects = await res.json();
-        document.getElementById("auth-form").style.display = "none";
-        adminPanel.classList.remove("admin-hidden");
-        renderProjects(projects);
-      } catch (err) {
-        alert("Incorrect password.");
-      }
-    });
-
-    function renderProjects(projects) {
-      projectList.innerHTML = "";
-      projects.forEach(p => {
-        const div = document.createElement("div");
-        div.className = "project-card";
-        div.innerHTML = `
-          <h4>${p.title}</h4>
-          <p><strong>${p.type}</strong></p>
-          <p>${p.description}</p>
-          <button onclick="deleteProject(${p.id})">Delete</button>
-        `;
-        projectList.appendChild(div);
-      });
-    }
-
-    addForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const newProject = {
-        title: document.getElementById("title").value,
-        type: document.getElementById("type").value,
-        description: document.getElementById("description").value,
-      };
-      const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Admin-Password": adminPassword,
-        },
-        body: JSON.stringify(newProject),
-      });
-      if (res.ok) location.reload();
-      else alert("Error adding project.");
-    });
-
-    async function deleteProject(id) {
-      const res = await fetch(`https://portfolio-website-hyiq.onrender.com/admin/projects/${id}`, {
-        method: "DELETE",
-        headers: { "X-Admin-Password": adminPassword },
-      });
-      if (res.ok) location.reload();
-      else alert("Error deleting project.");
-    }
-
-    window.submitOverlayPassword = async function () {
-      const input = document.getElementById("overlay-password");
-      adminPassword = input.value;
-
-      try {
-        const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
-          headers: { "X-Admin-Password": adminPassword }
-        });
-
-        if (!res.ok) {
-          document.getElementById("auth-error").style.display = "block";
-          return;
-        }
-
-        const projects = await res.json();
-        renderProjects(projects);
-
-        document.getElementById("blur-overlay").style.display = "none";
-        document.getElementById("admin-panel").classList.remove("admin-hidden");
-      } catch (err) {
-        console.error("Overlay auth failed:", err);
-        alert("Failed to contact backend.");
-      }
-    };
   </script>
 </body>
 </html>
