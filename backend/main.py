@@ -3,9 +3,10 @@ from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from os import getenv
-from models import Project
-from database import get_db
-import crud
+from .models import Project
+from .database import get_db
+from . import crud
+
 
 load_dotenv()
 
