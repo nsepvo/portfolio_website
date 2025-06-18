@@ -919,3 +919,51 @@ footer {
 .admin-hidden {
   display: none;
 }
+
+#blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .auth-popup {
+  background: #1e1e1e;
+  color: white;
+}
+
+.auth-popup input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-popup button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: #800080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}

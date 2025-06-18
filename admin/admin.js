@@ -1,6 +1,31 @@
 const API_URL = "https://portfolio-website-hyiq.onrender.com/admin/projects";
 const ADMIN_PASSWORD = prompt("Enter admin password:");
 
+let adminPassword = "";
+
+async function submitOverlayPassword() {
+  adminPassword = document.getElementById("overlay-password").value;
+
+  try {
+    const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
+      headers: { "X-Admin-Password": adminPassword }
+    });
+
+    if (!res.ok) {
+      document.getElementById("auth-error").style.display = "block";
+      return;
+    }
+
+    const projects = await res.json();
+    renderProjects(projects);
+
+    document.getElementById("blur-overlay").style.display = "none";
+    document.getElementById("admin-panel").classList.remove("admin-hidden");
+  } catch (err) {
+    alert("Error reaching server.");
+  }
+}
+
 async function fetchProjects() {
   try {
     const response = await fetch(API_URL, {
@@ -80,6 +105,3 @@ async function deleteProject(id) {
     alert("Failed to delete project.");
   }
 }
-
-// Load projects on page load
-window.onload = fetchProjects;
