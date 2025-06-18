@@ -1,30 +1,53 @@
 # backend/main.py
-
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-import os
+from dotenv import load_dotenv
+from os import getenv
+from models import Project
+from database import get_db
+import crud
+
+load_dotenv()
 
 app = FastAPI()
 
-# Allow your frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nevenspooner.com"], 
+    allow_origins=["https://nevenspooner.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to Neven's Backend!"}
+def verify_admin(request: Request):
+    password = request.headers.get("X-Admin-Password")
+    if password != getenv("ADMIN_PASSWORD"):
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
-@app.get("/projects")
-def get_projects():
-    return {
-        "projects": [
-            {"title": "Personal Portfolio", "type": "Personal", "description": "Live site with HTML/CSS and dark mode"},
-            {"title": "Cybersecurity Blue Team", "type": "Group", "description": "Led 6-member team to find and report vulnerabilities"},
-            {"title": "TryHackMe Challenges", "type": "CTFs", "description": "Web exploitation and cryptography challenges"}
-        ]
-    }
+@app.get("/admin/projects")
+async def list_projects(request: Request, _: None = Depends(verify_admin)):
+    conn = await get_db()
+    projects = await crud.get_projects(conn)
+    await conn.close()
+    return projects
+
+@app.post("/admin/projects")
+async def create_project(project: Project, request: Request, _: None = Depends(verify_admin)):
+    conn = await get_db()
+    await crud.add_project(conn, project)
+    await conn.close()
+    return {"message": "Project added"}
+
+@app.put("/admin/projects/{project_id}")
+async def update(project_id: int, project: Project, request: Request, _: None = Depends(verify_admin)):
+    conn = await get_db()
+    await crud.update_project(conn, project_id, project)
+    await conn.close()
+    return {"message": "Project updated"}
+
+@app.delete("/admin/projects/{project_id}")
+async def delete(project_id: int, request: Request, _: None = Depends(verify_admin)):
+    conn = await get_db()
+    await crud.delete_project(conn, project_id)
+    await conn.close()
+    return {"message": "Project deleted"}
