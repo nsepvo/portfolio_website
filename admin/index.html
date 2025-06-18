@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Manage Projects</title>
+  <link rel="stylesheet" href="../styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .admin-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+    }
+
+    .admin-container.dark-mode {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .admin-container h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .project-form, .project-list {
+      margin-bottom: 3rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.7rem 1.5rem;
+      background-color: #800080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5f005f;
+    }
+
+    .project-entry {
+      padding: 1rem;
+      background-color: #eee;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+
+    .dark-mode .project-entry {
+      background-color: #2c2c2c;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container" id="admin">
+    <h1>Project Management</h1>
+
+    <div class="project-form">
+      <h2>Add New Project</h2>
+      <input type="text" id="title" placeholder="Title">
+      <input type="text" id="type" placeholder="Type (e.g., Personal)">
+      <textarea id="description" placeholder="Description"></textarea>
+      <button onclick="addProject()">Add Project</button>
+    </div>
+
+    <div class="project-list">
+      <h2>Current Projects</h2>
+      <div id="project-list"></div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
