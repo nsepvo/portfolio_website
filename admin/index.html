@@ -133,6 +133,31 @@
       if (res.ok) location.reload();
       else alert("Error deleting project.");
     }
+
+    window.submitOverlayPassword = async function () {
+      const input = document.getElementById("overlay-password");
+      adminPassword = input.value;
+
+      try {
+        const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
+          headers: { "X-Admin-Password": adminPassword }
+        });
+
+        if (!res.ok) {
+          document.getElementById("auth-error").style.display = "block";
+          return;
+        }
+
+        const projects = await res.json();
+        renderProjects(projects);
+
+        document.getElementById("blur-overlay").style.display = "none";
+        document.getElementById("admin-panel").classList.remove("admin-hidden");
+      } catch (err) {
+        console.error("Overlay auth failed:", err);
+        alert("Failed to contact backend.");
+      }
+    };
   </script>
 </body>
 </html>
