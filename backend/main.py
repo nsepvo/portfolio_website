@@ -9,7 +9,7 @@ app = FastAPI()
 # Allow your frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nevenspooner.com"],  # Replace * with your domain later for security
+    allow_origins=["https://nevenspooner.com"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
