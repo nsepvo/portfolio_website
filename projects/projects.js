@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".project-grid2");
+  const container = document.querySelector(".project-grid");
 
   fetch("https://portfolio-website-hyiq.onrender.com/projects")
     .then(res => res.json())
