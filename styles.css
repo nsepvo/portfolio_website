@@ -438,7 +438,7 @@ footer {
   .timeline-container::before { left: 50%; }
   .resume-header { flex-direction: column; align-items: flex-start; }
 }
-=======
+
 html {
   scroll-behavior: smooth;
 }
@@ -879,4 +879,3 @@ footer {
   .timeline-container::before { left: 50%; }
   .resume-header { flex-direction: column; align-items: flex-start; }
 }
->>>>>>> 1fd566e729d6c20cfd4e692442a0d92262900c85
