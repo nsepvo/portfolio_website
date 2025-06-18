@@ -1,12 +1,12 @@
 const API_URL = "https://portfolio-website-hyiq.onrender.com/admin/projects";
 
-let adminPassword = ""; 
+let adminPassword = "";
 
 window.submitOverlayPassword = async function () {
   adminPassword = document.getElementById("overlay-password").value;
 
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
       headers: { "X-Admin-Password": adminPassword }
     });
 
@@ -16,12 +16,13 @@ window.submitOverlayPassword = async function () {
     }
 
     const projects = await res.json();
+    renderProjects(projects);
+
     document.getElementById("blur-overlay").style.display = "none";
     document.getElementById("admin-panel").classList.remove("admin-hidden");
-    renderProjects(projects);
   } catch (err) {
-    console.error("Error reaching server:", err);
-    alert("Error reaching server.");
+    console.error("Auth failed:", err);
+    alert("Server error or incorrect password.");
   }
 };
 
@@ -39,13 +40,20 @@ async function fetchProjects() {
 }
 
 function renderProjects(projects) {
-  const list = document.getElementById("project-list");
-  list.innerHTML = "";
+  projectList.innerHTML = "";
+  projects.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "project-card";
+    div.innerHTML = `
+      <h4>${p.title}</h4>
+      <p><strong>${p.type}</strong></p>
+      <p>${p.description}</p>
+      <button onclick="deleteProject(${p.id})">Delete</button>
+    `;
+    projectList.appendChild(div);
+  });
+}
 
-  if (!Array.isArray(projects)) {
-    console.error("Expected array but got:", projects);
-    return;
-  }
 
   projects.forEach((project) => {
     const div = document.createElement("div");
