@@ -1,13 +1,12 @@
 const API_URL = "https://portfolio-website-hyiq.onrender.com/admin/projects";
-const ADMIN_PASSWORD = prompt("Enter admin password:");
 
-let adminPassword = "";
+let adminPassword = ""; 
 
-async function submitOverlayPassword() {
+window.submitOverlayPassword = async function () {
   adminPassword = document.getElementById("overlay-password").value;
 
   try {
-    const res = await fetch("https://portfolio-website-hyiq.onrender.com/admin/projects", {
+    const res = await fetch(API_URL, {
       headers: { "X-Admin-Password": adminPassword }
     });
 
@@ -17,38 +16,47 @@ async function submitOverlayPassword() {
     }
 
     const projects = await res.json();
-    renderProjects(projects);
-
     document.getElementById("blur-overlay").style.display = "none";
     document.getElementById("admin-panel").classList.remove("admin-hidden");
+    renderProjects(projects);
   } catch (err) {
+    console.error("Error reaching server:", err);
     alert("Error reaching server.");
   }
-}
+};
 
 async function fetchProjects() {
   try {
     const response = await fetch(API_URL, {
-      headers: { "X-Admin-Password": ADMIN_PASSWORD }
+      headers: { "X-Admin-Password": adminPassword }
     });
     const projects = await response.json();
-    const list = document.getElementById("project-list");
-    list.innerHTML = "";
-
-    projects.forEach((project) => {
-      const div = document.createElement("div");
-      div.className = "project-entry";
-      div.innerHTML = `
-        <strong>${project.title}</strong> <em>(${project.type})</em>
-        <p>${project.description}</p>
-        <button onclick="deleteProject(${project.id})">Delete</button>
-      `;
-      list.appendChild(div);
-    });
+    renderProjects(projects);
   } catch (err) {
     console.error("Error loading projects:", err);
-    alert("Failed to load projects. Check password or server.");
+    alert("Failed to load projects.");
   }
+}
+
+function renderProjects(projects) {
+  const list = document.getElementById("project-list");
+  list.innerHTML = "";
+
+  if (!Array.isArray(projects)) {
+    console.error("Expected array but got:", projects);
+    return;
+  }
+
+  projects.forEach((project) => {
+    const div = document.createElement("div");
+    div.className = "project-entry";
+    div.innerHTML = `
+      <strong>${project.title}</strong> <em>(${project.type})</em>
+      <p>${project.description}</p>
+      <button onclick="deleteProject(${project.id})">Delete</button>
+    `;
+    list.appendChild(div);
+  });
 }
 
 async function addProject() {
@@ -66,7 +74,7 @@ async function addProject() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Admin-Password": ADMIN_PASSWORD,
+        "X-Admin-Password": adminPassword
       },
       body: JSON.stringify({ title, type, description })
     });
@@ -92,7 +100,7 @@ async function deleteProject(id) {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
       headers: {
-        "X-Admin-Password": ADMIN_PASSWORD
+        "X-Admin-Password": adminPassword
       }
     });
 
