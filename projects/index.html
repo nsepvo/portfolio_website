@@ -7,7 +7,7 @@
   <meta name="keywords" content="IT Graduate, Cybersecurity, Web Exploitation, Cryptography, Capture The Flag, Blue Team, Leadership, Web Hosting, Backend Development, SSL, Full Stack">
   <meta name="author" content="Neven Spooner">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -115,29 +115,6 @@
       } else {
         localStorage.setItem('darkMode', 'disabled');
       }
-    });
-  </script>
-
-  <script>
-  fetch("https://portfolio-website-hyiq.onrender.com/projects")
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('dynamic-projects');
-      if (!container) return;
-
-      data.projects.forEach(project => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.innerHTML = `
-          <h3>${project.title}</h3>
-          <p><strong>${project.type}</strong></p>
-          <p>${project.description}</p>
-        `;
-        container.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching projects:', error);
     });
   </script>
 
