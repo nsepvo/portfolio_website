@@ -27,6 +27,15 @@
     </nav>
   </header>
 
+  <div id="blur-overlay">
+    <div class="auth-popup">
+        <h2>Admin Login</h2>
+        <input type="password" id="overlay-password" placeholder="Enter admin password" />
+        <button onclick="submitOverlayPassword()">Enter</button>
+        <p id="auth-error" style="color: red; display: none;">Incorrect password</p>
+    </div>
+  </div>
+
   <main class="admin-container">
     <h1>Admin Panel</h1>
 
