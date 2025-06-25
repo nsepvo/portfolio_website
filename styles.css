@@ -968,4 +968,12 @@ body.dark-mode .auth-popup {
   border: none;
   border-radius: 5px;
   font-weight: bold;
+  transform: scale(0.96);
+  transition: transform 0.05s ease;
+}
+
+/* Add to your CSS */
+.auth-popup #overlay-submit button:active {
+  transform: scale(0.96);
+  transition: transform 0.05s ease;
 }
