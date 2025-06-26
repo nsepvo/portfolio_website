@@ -880,6 +880,16 @@ footer {
   .resume-header { flex-direction: column; align-items: flex-start; }
 }
 
+.auth-popup button {
+  padding: 0.8rem;
+  background-color: #800080;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .admin-container {
   padding: 5rem 2rem;
   max-width: 800px;
@@ -968,12 +978,6 @@ body.dark-mode .auth-popup {
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  transform: scale(0.96);
-  transition: transform 0.05s ease;
-}
-
-/* Add to your CSS */
-.auth-popup #overlay-submit button:active {
   transform: scale(0.96);
   transition: transform 0.05s ease;
 }
