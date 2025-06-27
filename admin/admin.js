@@ -1,7 +1,7 @@
 const API_URL = "https://portfolio-website-hyiq.onrender.com/admin/projects";
 
-let adminPassword = "";
-const adminUsername = "nevens2003"; // or whatever you set in .env
+let adminPassword = "Ninjastar123";
+const adminUsername = "nevens2003"; 
 
 window.addEventListener("DOMContentLoaded", () => {
   const overlayButton = document.getElementById("overlay-submit");
