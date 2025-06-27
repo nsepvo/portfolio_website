@@ -135,6 +135,50 @@ input:checked + .slider::before {
   transform: translateX(22px);
 }
 
+/* Project page formatting */
+.projects.blog-style {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.project-entry {
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: var(--card-bg, #fff);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s;
+}
+
+.project-entry:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+}
+
+.project-entry h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.project-entry p {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary, #444);
+}
+
+.dark-mode .project-entry {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.dark-mode .project-entry p {
+  color: #b0b0b0;
+}
+
 /* Resume Document Formatting */
 .resume-document {
   background-color: #fdfdfd;
