@@ -120,13 +120,16 @@
       try {
         const res = await fetch(`${API_URL}/${id}`, {
           method: "DELETE",
-          headers: { "X-Admin-Password": adminPassword },
+          headers: {
+            "Authorization": "Basic " + btoa(`${adminUsername}:${adminPassword}`)
+          },
         });
         if (res.ok) fetchProjects();
         else alert("Error deleting project.");
       } catch (err) {
-        console.error("Error deleting project:", err);
-        alert("Failed to delete project.");
+        const errorText = await res.text();
+        console.error("Error deleting project:", res.status, errorText);
+        alert("Failed to delete project: " + res.status);
       }
     }
   </script>
