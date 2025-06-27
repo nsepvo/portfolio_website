@@ -31,8 +31,9 @@
   <div id="blur-overlay">
     <div class="auth-popup">
       <h2>Admin Login</h2>
-      <input type="password" id="overlay-password" placeholder="Enter admin password" />
-      <button type="submit" id="overlay-submit">Enter</button>
+      <input id="overlay-username" type="text" placeholder="Username"><br>
+      <input id="overlay-password" type="password" placeholder="Password"><br>
+      <button onclick="login()">Login</button>
       <p id="auth-error" style="color: red; display: none;">Incorrect password</p>
     </div>
   </div>
@@ -68,16 +69,30 @@
     });
 
     async function fetchProjects() {
-      try {
-        const response = await fetch(API_URL, {
-          headers: { "X-Admin-Password": adminPassword }
+      fetch("/admin/projects", {
+        headers: {
+          "Authorization": currentAuth
+        }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Authentication failed");
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("admin-panel").style.display = "block";
+
+        const list = document.getElementById("project-list");
+        list.innerHTML = "";
+        data.forEach(project => {
+          const li = document.createElement("li");
+          li.textContent = project.title;
+          list.appendChild(li);
         });
-        const projects = await response.json();
-        renderProjects(projects);
-      } catch (err) {
-        console.error("Error loading projects:", err);
-        alert("Failed to load projects.");
-      }
+      })
+      .catch(err => {
+        document.getElementById("error").textContent = "Invalid username or password";
+      });
     }
 
     function renderProjects(projects) {
