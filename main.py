@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 password = b"Ninjastar123" 
 hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-print(hashed.decode())
+# print(hashed.decode())
 
 load_dotenv()
 
