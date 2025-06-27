@@ -31,12 +31,15 @@
   <div id="blur-overlay">
     <div class="auth-popup">
       <h2>Admin Login</h2>
-      <input id="overlay-username" type="text" placeholder="Username"><br>
-      <input id="overlay-password" type="password" placeholder="Password"><br>
-      <button onclick="login()">Login</button>
-      <p id="auth-error" style="color: red; display: none;">Incorrect password</p>
+      <form id="login-form" onsubmit="event.preventDefault(); submitOverlayPassword();">
+        <input id="overlay-username" type="text" placeholder="Username" required /><br>
+        <input id="overlay-password" type="password" placeholder="Password" required /><br>
+        <button type="submit" id="overlay-submit">Login</button>
+      </form>
+      <p id="auth-error" style="color: red; display: none;">Incorrect username or password</p>
     </div>
   </div>
+
 
   <!-- Admin Panel -->
   <main class="admin-container">
