@@ -1,0 +1,9 @@
+# Do not track sensitive or environment-specific files
+.env
+*.env
+admin.js
+
+# Optional: ignore virtual environments or node_modules
+venv/
+node_modules/
+__pycache__/

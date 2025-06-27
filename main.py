@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import bcrypt, os
 from dotenv import load_dotenv
 
-password = b"Ninjastar123" 
+password = b"6L4*YvJM-QSKimt" 
 hashed = bcrypt.hashpw(password, bcrypt.gensalt())
 # print(hashed.decode())
 
